@@ -22,8 +22,8 @@ class UserResource extends JsonResource
             'data_name'            =>  $this->data->name,
             'data_surname'         =>  $this->data->surname,
             'data_gender'          =>  $this->data->gender,
-            'town_name'            =>  '',
-            'town_translit_name'   =>  ''
+            'town_name'            =>  $this->data->town->name,
+            'town_translit_name'   =>  $this->data->town->translit_name
         ];
     }
 

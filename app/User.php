@@ -18,9 +18,21 @@ class User extends Authenticatable
     protected $fillable = [
         'email', 'phone', 'status',
     ];
+    protected $with = ['data'];
 
     protected $casts = [
         "status" => "boolean",
     ];
+
+    /*
+    |--------------------------------------------------------------------------
+    | RELATIONS
+    |--------------------------------------------------------------------------
+    */
+
+    public function data()
+    {
+        return $this->hasOne('App\UsersData', 'user_id');
+    }
 
 }
