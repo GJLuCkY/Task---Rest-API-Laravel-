@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
+
 
 class UserCreateRequest extends FormRequest
 {
@@ -13,7 +13,7 @@ class UserCreateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,27 @@ class UserCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required',
+            'surname' => 'required',
+            'email' => 'required|unique:users',
+            'phone' => 'required|unique:users'
+        ];
+    }
+
+    /**
+     * Custom message for validation
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'name.required' => 'Требуется заполнить name!',
+            'surname.required' => 'Требуется заполнить surname!',
+            'email.required' => 'Требуется заполнить email!',
+            'phone.required' => 'Требуется заполнить phone!',
+            'email.unique' => 'Такой email уже существует',
+            'phone.unique' => 'Такой phone уже существует'
         ];
     }
 }

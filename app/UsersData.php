@@ -19,4 +19,6 @@ class UsersData extends Model
     {
         return $this->belongsTo('App\Town', 'town_id');
     }
+
+    
 }

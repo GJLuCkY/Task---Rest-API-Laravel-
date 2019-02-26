@@ -6,6 +6,7 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use App\Traits\ApiResponseTrait;
 
 /**
  * @OA\Info(
@@ -24,7 +25,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 /**
  *  @OA\Server(
- *      url="https://demo-777.brandstudio.kz/api",
+ *      url="http://rest.test/api",
  *      description="Task - REST API OpenApi Server"
  * )
  */
@@ -33,5 +34,5 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Controller extends BaseController
 {
-    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+    use AuthorizesRequests, DispatchesJobs, ValidatesRequests, ApiResponseTrait;
 }

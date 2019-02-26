@@ -14,11 +14,32 @@
     },
     "servers": [
         {
-            "url": "https://demo-777.brandstudio.kz/api",
+            "url": "http://rest.test/api",
             "description": "Task - REST API OpenApi Server"
         }
     ],
     "paths": {
+        "/towns": {
+            "get": {
+                "tags": [
+                    "Города"
+                ],
+                "summary": "Список всех городов",
+                "description": "Возвращает список всех городов",
+                "operationId": "all",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
         "/user": {
             "post": {
                 "tags": [
@@ -66,6 +87,77 @@
                         "passport": []
                     }
                 ]
+            }
+        },
+        "/users": {
+            "get": {
+                "tags": [
+                    "Пользователи"
+                ],
+                "summary": "Список всех пользователей",
+                "description": "Возвращает список всех пользователей",
+                "operationId": "all",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/user/{id}": {
+            "get": {
+                "tags": [
+                    "Пользователь"
+                ],
+                "summary": "Информация о пользователя",
+                "description": "Возвращает информацию о пользователя",
+                "operationId": "getUserById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID пользователя",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/user/count": {
+            "get": {
+                "tags": [
+                    "Количество пользователей"
+                ],
+                "summary": "Количество пользователей",
+                "description": "Возвращает количество пользователей",
+                "operationId": "getCountUsers",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    }
+                }
             }
         }
     }

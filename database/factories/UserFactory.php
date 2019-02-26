@@ -15,10 +15,36 @@ use Faker\Generator as Faker;
 
 $factory->define(App\User::class, function (Faker $faker) {
     return [
-        'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
-        'email_verified_at' => now(),
-        'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret
-        'remember_token' => str_random(10),
+        'phone' => $faker->e164PhoneNumber,
+        'status' => rand(0, 1),
+    ];
+});
+
+$factory->define(App\UsersData::class, function (Faker $faker) {
+    $gender = [
+        'male',
+        'female',
+        'undefined'
+    ];
+
+    $type = rand(0, 2);
+    $firstTown = App\Town::first();
+    $latestTown = App\Town::latest()->first();
+
+    $town_id = rand($firstTown->id, $latestTown->id);
+
+    return [
+        'name' => $faker->firstName,
+        'surname' => $faker->lastName,
+        'gender' => $gender[$type],
+        'town_id' => $town_id
+    ];
+});
+
+$factory->define(App\Town::class, function (Faker $faker) {
+    return [
+        'name' => $faker->city,
+        'translit_name' => $faker->city
     ];
 });
