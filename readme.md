@@ -21,3 +21,20 @@ surname, email, phone;
 
 # Требования
 Приложение должно работать без ошибок;
+
+
+
+# Установка
+
+  - git clone https://github.com/GJLuCkY/Task---Rest-API-Laravel-.git .
+  - cd project-folder
+  - composer install
+  - create database
+  - cp .env.example .env
+  - php artisan key:generate
+  - set DB
+  - php artisan migrate
+  - php artisan db:seed --class=TownsTableSeeder
+  - php artisan db:seed --class=UsersTableSeeder
+
+
